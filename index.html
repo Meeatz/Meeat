@@ -40,14 +40,14 @@
             </div>
             <div class="content">
                 <div class="inner">
-                    <h1>cp❤️zw</h1>
-                    <p class="glow-text" id="days-count">哦也~</p>
+                    <h1>Meeat</h1>
+                    <p class="glow-text" id="time-count">哦也~</p>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="QQ群" target="_blank">QQ群</a></li>
-                    <li><a href="#licheng">爱情故事</a></li>
+                    <li><a href="#licheng">发展历程</a></li>
                     <li><a href="未添加" target="_blank">我的社交</a></li>
                     <li><a href="#">暂未添加</a></li>
                 </ul>
@@ -127,17 +127,25 @@
     <script src="js/main.js"></script>
     
     <script>
-        // 计算从2024年4月23日到现在的天数
-        function updateDaysCount() {
-            const startDate = new Date('2024-04-23'); // 开始日期
-            const today = new Date(); // 当前日期
-            const timeDiff = today - startDate; // 时间差（毫秒）
+        // 计算从2024年4月23日21时12分35秒到现在的天数、小时、分钟和秒
+        function updateTimeCount() {
+            const startDate = new Date('2024-04-23T21:12:35'); // 开始日期和时间
+            const now = new Date(); // 当前日期和时间
+            const timeDiff = now - startDate; // 时间差（毫秒）
+
             const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 转换为天数
-            document.getElementById('days-count').textContent = `相爱已经 ${daysDiff} 天了~`;
+            const hoursDiff = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // 剩余小时
+            const minutesDiff = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)); // 剩余分钟
+            const secondsDiff = Math.floor((timeDiff % (1000 * 60)) / 1000); // 剩余秒
+
+            document.getElementById('time-count').textContent = `已经 ${daysDiff} 天 ${hoursDiff} 小时 ${minutesDiff} 分 ${secondsDiff} 秒了哦~`;
         }
 
-        // 初始化天数计数
-        updateDaysCount();
+        // 每秒更新计时
+        setInterval(updateTimeCount, 1000);
+
+        // 初始化计时
+        updateTimeCount();
     </script>
 </body>
 </html>
