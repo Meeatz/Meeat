@@ -10,23 +10,108 @@
     <link rel="stylesheet" href="css/main.css">
     <noscript><link rel="stylesheet" href="css/noscript.css"></noscript>
     <style>
-        /* 保持原有CSS完全不变 */
-        body { font-family: Arial, sans-serif; }
-        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
-        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
-        .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
-        .audio-player { margin: 20px 0; text-align: center; }
-        .audio-player audio { width: 100%; max-width: 400px; border-radius: 15px; background-color: #FFC0CB; }
-        .glow-text { font-size: 36px; color: #333; text-shadow: 0 0 10px #FFC0CB; }
-        .image-container { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 20px 0; }
-        .image-container img { max-width: 200px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        /* 完整保留原有CSS */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            background: #f5f5f5;
+        }
+        .modal { 
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .audio-player {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .audio-player audio {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            background-color: #FFC0CB;
+        }
+        .glow-text {
+            font-size: 36px;
+            color: #333;
+            text-shadow: 0 0 10px #FFC0CB;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 新增样式 */
+        .hidden { display: none !important; }
+        #licheng {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 800px;
+            display: none;
+        }
+        .love-timeline {
+            list-style: none;
+            padding: 0;
+            position: relative;
+        }
+        .timeline-item {
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: rgba(255, 192, 203, 0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #FFC0CB;
+            border-radius: 50%;
+        }
     </style>
 </head>
-<!-- 修复body onload语法错误 -->
 <body class="is-preload">
 
-<!-- 保持原有DOM结构完全不变 -->
 <div id="wrapper">
     <header id="header">
         <div class="logo">
@@ -43,92 +128,90 @@
         </div>
         <nav>
             <ul>
-                <li><a href="QQ群" target="_blank">暂未添加</a></li>
-                <li><a href="#licheng">爱情故事</a></li>
+                <li><a href="#home">首页</a></li>
+                <li><a href="javascript:void(0)" onclick="showLoveStory()">爱情故事</a></li>
                 <li><a href="MET PVZ杂交版插件 辅助 正式版V1.2.7z" download>我的作品</a></li>
                 <li><a href="#">暂未添加</a></li>
             </ul>
         </nav>
     </header>
+<!-- 完整的爱情故事页面 -->
+    <article id="licheng" class="hidden">
+        <h2>爱情故事</h2>
+        <ul class="love-timeline">
+            <!-- 完整的时间线内容 -->
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2022年1月25日 · 初遇</h3>
+                <p>冬夜的风裹着星子掠过窗棂，两个轨迹在数字海洋中悄然交汇。那句"你好呀"像一粒种子，落在时光的土壤里。</p>
+            </li>
 
-    <article id="licheng">
-    <h2>爱情故事</h2>
-    <ul class="love-timeline">
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2022年1月25日 · 初遇</h3>
-            <p>冬夜的风裹着星子掠过窗棂，两个轨迹在数字海洋中悄然交汇。那句"你好呀"像一粒种子，落在时光的土壤里。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2022年1月27日 · 萌芽</h3>
+                <p>48小时的星移物换，我们找到了共享银河的频率。对话框里绽放的月见草，预告着故事的第二章。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2022年1月27日 · 萌芽</h3>
-            <p>48小时的星移物换，我们找到了共享银河的频率。对话框里绽放的月见草，预告着故事的第二章。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2023年4月1日 · 迷雾</h3>
+                <p>愚人节的雨下了整整三个月，沉默在对话框里筑起玻璃幕墙。我守着时差数秒针，却数不清星光黯淡的刻度。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2023年4月1日 · 迷雾</h3>
-            <p>愚人节的雨下了整整三个月，沉默在对话框里筑起玻璃幕墙。我守着时差数秒针，却数不清星光黯淡的刻度。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2023年7月 · 虹现</h3>
+                <p>蝉鸣撕开盛夏的茧，某个午夜电流重新接通。我们小心地擦拭记忆琥珀，发现星光从未真正离开。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2023年7月 · 虹现</h3>
-            <p>蝉鸣撕开盛夏的茧，某个午夜电流重新接通。我们小心地擦拭记忆琥珀，发现星光从未真正离开。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2024年4月23日 · 蝶变</h3>
+                <p>春樱纷扬的午夜，心跳声终于震碎最后的胆怯。当"愿意"两个字点亮屏幕，全宇宙的星辰都落在我的眼眶。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2024年4月23日 · 蝶变</h3>
-            <p>春樱纷扬的午夜，心跳声终于震碎最后的胆怯。当"愿意"两个字点亮屏幕，全宇宙的星辰都落在我的眼眶。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2024年5月18日 · 初绽</h3>
+                <p>爆米花的甜香裹着影院蓝光，生日烛火映亮你眼中的银河。我们收集了无数个"第一次"，装订成青春最璀璨的标本。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2024年5月18日 · 初绽</h3>
-            <p>爆米花的甜香裹着影院蓝光，生日烛火映亮你眼中的银河。我们收集了无数个"第一次"，装订成青春最璀璨的标本。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2024年6月8日 · 朝暮</h3>
+                <p>穿过三百六十五次日升月落，终于让想象中你的轮廓染上真实的温度。校门口那株梧桐记得，树影怎样描摹我们重逢的剪影。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2024年6月8日 · 朝暮</h3>
-            <p>穿过三百六十五次日升月落，终于让想象中你的轮廓染上真实的温度。校门口那株梧桐记得，树影怎样描摹我们重逢的剪影。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2024年7月28日 · 夜航</h3>
+                <p>信号灯突然暗掉的夜晚，我在情绪迷宫里失了方向。发给星空的十四行诗，句尾都挂着未落的泪滴。</p>
+            </li>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2024年7月28日 · 夜航</h3>
-            <p>信号灯突然暗掉的夜晚，我在情绪迷宫里失了方向。发给星空的十四行诗，句尾都挂着未落的泪滴。</p>
-        </li>
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <h3>2024年8月1日 · 辰星</h3>
+                <p>第一百次地球自转时，我们收集了所有晨昏线的光，熔铸成永不锈蚀的承诺。宇宙的秒针在此刻永恒停驻。</p>
+            </li>
+        </ul>
 
-        <li class="timeline-item">
-            <div class="timeline-marker"></div>
-            <h3>2024年8月1日 · 辰星</h3>
-            <p>第一百次地球自转时，我们收集了所有晨昏线的光，熔铸成永不锈蚀的承诺。宇宙的秒针在此刻永恒停驻。</p>
-        </li>
-    </ul>
-
-    <div class="love-footnote">
-        <p>📜 持续书写中 · 我们的故事永远留有下一章</p>
-        <div class="seal-wrap">
-            <div class="wax-seal"></div>
-        </div>
-    </div>
-</article>
-            
-            <div class="audio-player">
-                <h3>我爱你cp</h3>
-                <audio id="audio" controls>
-                    <source src="your-audio-file.mp3" type="audio/mpeg">
-                    您的浏览器不支持音频元素。
-                </audio>
+        <div class="love-footnote">
+            <p>📜 持续书写中 · 我们的故事永远留有下一章</p>
+            <div class="seal-wrap">
+                <div class="wax-seal"></div>
             </div>
-            <p><a href="#">返回</a></p>
-        </article>
-    </div>
-</div>
+        </div>
 
+        <div class="audio-player">
+            <h3>我爱你cp</h3>
+            <audio id="audio" controls>
+                <source src="your-audio-file.mp3" type="audio/mpeg">
+                您的浏览器不支持音频元素。
+            </audio>
+        </div>
+        <p>返回首页</p>
+    </article>
+</div>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
@@ -139,7 +222,6 @@
 
 <div id="bg"></div>
 
-<!-- 保持脚本引用顺序不变 -->
 <script src="js/jquery.min.js"></script>
 <script src="js/browser.min.js"></script>
 <script src="js/breakpoints.min.js"></script>
@@ -147,9 +229,9 @@
 <script src="js/main.js"></script>
 
 <script>
-// 修复后的JavaScript代码
+// 完整JavaScript功能
 document.addEventListener("DOMContentLoaded", function() {
-    // 时间计算功能
+    // 时间计算
     function updateTimeCount() {
         const startDate = new Date('2024-04-23T21:12:35');
         const now = new Date();
@@ -164,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
             `相爱${daysDiff} 天 ${hoursDiff} 小时 ${minutesDiff} 分 ${secondsDiff} 秒了哦~`;
     }
 
-    // 模态框功能
+    // 模态框控制
     const modal = document.getElementById("myModal");
     const closeModal = document.getElementById("closeModal");
 
@@ -182,7 +264,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // 初始化功能
+    // 页面切换功能
+    window.showLoveStory = function() {
+        document.getElementById('header').classList.add('hidden');
+        document.getElementById('licheng').classList.remove('hidden');
+        window.scrollTo({
+            top: document.getElementById('licheng').offsetTop - 60,
+            behavior: 'smooth'
+        });
+    }
+
+    window.returnHome = function() {
+        document.getElementById('header').classList.remove('hidden');
+        document.getElementById('licheng').classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 初始化
     updateTimeCount();
     setInterval(updateTimeCount, 1000);
     showModal();
