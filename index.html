@@ -17,7 +17,16 @@
             background: #f5f5f5;
         }
         .modal { 
-            display: none;
+            /* 修改为 */
+#licheng {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 800px;
+    /* 删除display: none */
+}
             position: fixed;
             z-index: 1;
             left: 0;
@@ -85,7 +94,16 @@
             border-radius: 10px;
             margin: 2rem auto;
             max-width: 800px;
-            display: none;
+            /* 修改为 */
+#licheng {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 800px;
+    /* 删除display: none */
+}
         }
         .love-timeline {
             list-style: none;
@@ -208,10 +226,11 @@
                 <source src="your-audio-file.mp3" type="audio/mpeg">
                 您的浏览器不支持音频元素。
             </audio>
-        </div>
-        <p>返回首页</p>
+        <!-- 在爱情故事页面的音频播放器下方添加 -->
+<p style="text-align:center;cursor:pointer;" onclick="returnHome()">返回首页</p>
     </article>
 </div>
+
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
