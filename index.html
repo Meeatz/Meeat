@@ -84,100 +84,8 @@
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-/* 星空背景 */
-.starry-sky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
 
-.star {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    animation: twinkle 1.5s infinite;
-}
-
-@keyframes twinkle {
-    0% { opacity: 0.2; }
-    50% { opacity: 1; }
-    100% { opacity: 0.2; }
-}
-
-/* 爱心光标轨迹 */
-.cursor-heart {
-    position: fixed;
-    pointer-events: none;
-    animation: heartFloat 1s ease-out;
-}
-
-@keyframes heartFloat {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(3) translateY(-20px); opacity: 0; }
-}
-
-/* 情书展开特效 */
-.love-letter {
-    position: relative;
-    background: #fff5f8;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 182, 193, 0.3);
-    transform: rotate(-2deg);
-    margin: 20px auto;
-    max-width: 600px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.love-letter:hover {
-    transform: rotate(1deg) scale(1.02);
-}
-
-/* 心跳动画 */
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    15% { transform: scale(1.3); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    60% { transform: scale(1); }
-}
-
-.heartbeat {
-    animation: heartbeat 1.5s infinite;
-}
-
-/* 动态渐变背景 */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, 
-        #ff9a9e, 
-        #fad0c4, 
-        #fad0c4, 
-        #a1c4fd
-    );
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    z-index: -2;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-</style>
-
-
+/* 新增花瓣飘落效果 */
 .petal {
     position: absolute;
     width: 15px;
@@ -374,18 +282,6 @@ body::after {
             <p>📜 持续书写中 · 我们的故事永远留有下一章</p>
             <div class="seal-wrap">
                 <div class="wax-seal"></div>
-                <!-- 在爱情故事页面底部添加 -->
-<div class="love-letter">
-    <h3>给CP的情书</h3>
-    <p>我们的故事是星辰写就的诗，每个标点都是心跳的印记...</p>
-    <div class="wax-seal heartbeat" style="
-        width: 50px;
-        height: 50px;
-        background: #ff6b6b;
-        border-radius: 50%;
-        margin: 10px auto;
-        box-shadow: 0 0 15px rgba(255,107,107,0.5);
-/* 新增花瓣飘落效果 */
             </div>
         </div>
 
