@@ -288,24 +288,87 @@
         <div class="audio-player">
             <h3>我爱你cp</h3>
             <audio id="audio" controls>
-<style>
-        /* 新增音频容器样式 */
-        #audio-container {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-        }
-    </style>
-</head>
-<body class="is-preload">
-
-<!-- 新增音频容器 -->
-<div id="audio-container">
-    <audio id="audio" loop>
-        <source src="/your-audio-file.mp3" type="audio/mpeg">
-    </audio>
+                <source src="your-audio-file.mp3" type="audio/mpeg">
+                您的浏览器不支持音频元素。
+            </audio>
+        <!-- 在爱情故事页面的音频播放器下方添加 -->
+<p style="text-align:center;cursor:pointer;" onclick="returnHome()">返回首页</p>
+    </article>
 </div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>欢迎见证我的爱情故事</h2>
+        <p>感谢您的访问，希望您能喜欢这里的内容！</p>
+    </div>
+</div>
+
+<div id="bg"></div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/browser.min.js"></script>
+<script src="js/breakpoints.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
+
 <script>
+// 完整JavaScript功能
+document.addEventListener("DOMContentLoaded", function() {
+    // 时间计算
+    function updateTimeCount() {
+        const startDate = new Date('2024-04-23T21:12:35');
+        const now = new Date();
+        const timeDiff = now - startDate;
+
+        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hoursDiff = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutesDiff = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const secondsDiff = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        document.getElementById('time-count').textContent = 
+            `相爱${daysDiff} 天 ${hoursDiff} 小时 ${minutesDiff} 分 ${secondsDiff} 秒了哦~`;
+    }
+
+    // 模态框控制
+    const modal = document.getElementById("myModal");
+    const closeModal = document.getElementById("closeModal");
+
+    function showModal() {
+        modal.style.display = "block";
+    }
+
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // 页面切换功能
+    window.showLoveStory = function() {
+        document.getElementById('header').classList.add('hidden');
+        document.getElementById('licheng').classList.remove('hidden');
+        window.scrollTo({
+            top: document.getElementById('licheng').offsetTop - 60,
+            behavior: 'smooth'
+        });
+    }
+
+    window.returnHome = function() {
+        document.getElementById('header').classList.remove('hidden');
+        document.getElementById('licheng').classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 初始化
+    updateTimeCount();
+    setInterval(updateTimeCount, 1000);
+    showModal();
+});
+</script>
+</body>
 </html>
