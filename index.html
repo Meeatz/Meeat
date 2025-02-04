@@ -288,9 +288,66 @@
         <div class="audio-player">
             <h3>我爱你cp</h3>
             <audio id="audio" controls>
-                <source src="your-audio-file.mp3" type="audio/mpeg">
-                您的浏览器不支持音频元素。
-            </audio>
+<!-- 修改audio播放器部分 -->
+<div class="audio-player" style="display: none;">
+    <audio id="audio" autoplay loop>
+        <source src="audio/our-love-story.mp3" type="audio/mpeg">
+        您的浏览器不支持音频元素
+    </audio>
+</div>
+
+<script>
+// 修改showLoveStory函数
+window.showLoveStory = function() {
+    document.getElementById('header').classList.add('hidden');
+    document.getElementById('licheng').classList.remove('hidden');
+    
+    // 自动播放逻辑
+    const audio = document.getElementById('audio');
+    const playAudio = () => {
+        audio.play().catch(error => {
+            // 创建交互式引导按钮
+            const playButton = document.createElement('button');
+            playButton.style = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 15px 30px;
+                background: #ff69b4;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+                z-index: 9999;
+            `;
+            playButton.textContent = '点击开启我们的BGM';
+            playButton.onclick = () => {
+                audio.play();
+                playButton.remove();
+            };
+            document.body.appendChild(playButton);
+        });
+    };
+
+    // 首次尝试播放
+    playAudio();
+    
+    window.scrollTo({
+        top: document.getElementById('licheng').offsetTop - 60,
+        behavior: 'smooth'
+    });
+}
+
+// 添加页面点击事件监听（解决浏览器自动播放限制）
+document.addEventListener('click', function initAudio() {
+    const audio = document.getElementById('audio');
+    audio.volume = 0.5; // 设置初始音量
+    document.removeEventListener('click', initAudio);
+});
+</script>
+
         <!-- 在爱情故事页面的音频播放器下方添加 -->
 <p style="text-align:center;cursor:pointer;" onclick="returnHome()">返回首页</p>
     </article>
@@ -371,4 +428,4 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 </body>
-</html>
+    </html>
