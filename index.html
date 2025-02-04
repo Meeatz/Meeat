@@ -17,17 +17,14 @@
             background: #f5f5f5;
         }
         .modal { 
-            
-    #licheng {
-            position: relative;
-            background: #fff5f9;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(195,192,203,1);
-            border: 2px solid #ffd854;
-    }
+            /* 修改为 */
+#licheng {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 800px;
     /* 删除display: none */
 }
             position: fixed;
@@ -88,11 +85,76 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
+/* 新增花瓣飘落效果 */
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: url('data:image/svg+xml,<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="%23ff9a9e" d="M10 3C6 8 0 8 0 13s5 4 10 0 10 1 10-4-6-5-10-6z"/></svg>');
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* 添加3D翻页效果 */
+#licheng {
+    perspective: 1000px;
+}
+
+.love-timeline {
+    transform-style: preserve-3d;
+}
+
+.timeline-item {
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: left center;
+}
+
+.timeline-item:hover {
+    transform: rotateY(10deg) translateX(20px);
+    box-shadow: -15px 15px 30px rgba(255, 117, 140, 0.2);
+}
+
+/* 添加动态高光效果 */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(255,223,186,0.3) 0%,
+        rgba(255,196,196,0.3) 50%,
+        rgba(255,223,186,0.3) 100%
+    );
+    z-index: -1;
+    border-radius: 10px;
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0; }
+}
+
+/* 添加章节呼吸光效 */
+.timeline-item h3 {
+    position: relative;
+    display: inline-block;
+    padding-right: 30px;
+}
+
         /* 新增样式 */
         .hidden { display: none !important; }
         #licheng {
             position: relative;
-            background: rgba(255, 195, 195, 0.9);
+            background: rgba(255, 255, 255, 0.9);
             padding: 2rem;
             border-radius: 10px;
             margin: 2rem auto;
@@ -100,11 +162,11 @@
             /* 修改为 */
 #licheng {
     position: relative;
-    background: rgba(155, 155, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 10px;
     margin: 2rem auto;
-    max-width: 600px;
+    max-width: 800px;
     /* 删除display: none */
 }
         }
